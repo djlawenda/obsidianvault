@@ -1,0 +1,56 @@
+site_name: Obsidian Vault
+theme:
+  name: material
+  features:
+  - navigation.tabs
+  - navigation.indexes
+  - toc.integrate
+  - search.suggest
+  - search.highlight
+  - content.tabs.link
+  - content.code.annotate
+  - content.code.copy
+  palette:
+  - scheme: default
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+  - scheme: slate
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/brightness-4
+      name: Switch to light mode
+plugins:
+- search
+nav:
+- Agents:
+  - Persona: Agents/Persona.md
+  - Knowledge Graph Agent Instructions: Agents/Knowledge_Graph_Agent_Instructions.md
+  - Vault Structure Overview: Agents/vault_structure_overview.md
+- journal:
+  - 2026 02 28: journal/2026-02-28.md
+- Books:
+  - Summaries:
+    - Designing Data Intensive Applications Part 6 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_6_of_10_Summary.md
+    - Designing Data Intensive Applications Part 4 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_4_of_10_Summary.md
+    - Designing Data Intensive Applications Part 9 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_9_of_10_Summary.md
+    - Designing Data Intensive Applications Part 8 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_8_of_10_Summary.md
+    - Designing Data Intensive Applications Part 3 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_3_of_10_Summary.md
+    - Designing Data Intensive Applications Part 2 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_2_of_10_Summary.md
+    - Designing Data Intensive Applications Part 10 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_10_of_10_Summary.md
+    - Designing Data Intensive Applications Part 7 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_7_of_10_Summary.md
+    - Designing Data Intensive Applications Part 5 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_5_of_10_Summary.md
+    - Designing Data Intensive Applications Part 1 Of 10 Summary: Books/Summaries/Designing
+        Data Intensive Applications_part_1_of_10_Summary.md
