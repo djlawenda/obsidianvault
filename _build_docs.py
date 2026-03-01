@@ -1,1 +1,243 @@
-import os\nimport shutil\nfrom pathlib import Path\nimport yaml\nimport re # Import re for regular expressions\n\nVAULT_ROOT = Path(__file__).resolve().parent\nDOCS_DIR = VAULT_ROOT / \"docs\"\nMKDOCS_YML = VAULT_ROOT / \"mkdocs.yml\"\n\n# Source directories for notes\nSOURCE_DIRS = [\n    VAULT_ROOT / \"Resources\",\n    VAULT_ROOT / \"Resources\" / \"Processed_Transcripts\", # Explicitly include for clarity\n    VAULT_ROOT / \"Books\" / \"Summaries\",\n    VAULT_ROOT / \"Projects\", # Include projects folder\n]\n\ndef clean_docs_dir():\n    if DOCS_DIR.exists():\n        print(f\"Cleaning existing {DOCS_DIR}...\")\n        shutil.rmtree(DOCS_DIR)\n    DOCS_DIR.mkdir()\n\ndef rewrite_internal_links(file_path: Path):\n    \"\"\"\n    Rewrites relative internal Markdown links to be root-relative.\n    Specifically targets patterns observed in warnings.\n    \"\"\"\n    with open(file_path, \"r\", encoding=\'utf-8\') as f:\n        content = f.read()\n\n    original_content = content # Keep original to check for changes\n\n    # Regex to find Markdown links and image links: [text](link) or ![text](link)\n    # This pattern captures the link path within the parentheses\n    link_pattern = re.compile(r\'(\]\(|!\[.*?\]\()(.+?)(\))\')\n\n    def replace_link(match):\n        prefix = match.group(1) # e.g., \"](\", \"![](\"\n        link_path = match.group(2) # The actual link content\n        suffix = match.group(3) # \")\"\n\n        # Only process internal links that look like relative paths\n        if not link_path.startswith((\'http://\', \'https://\', \'#\', \'/\')):\n            # Normalize to use / as path separator for consistency\n            normalized_link_path = Path(link_path).as_posix()\n            \n            # Resolve to be relative to VAULT_ROOT first, then to DOCS_DIR\n            # This handles cases like \'../../Processed_Transcripts/File.md\'\n            # and converts them to \'/Resources/Processed_Transcripts/File.md\'\n            \n            # Construct absolute path based on original file\'s assumed location relative to VAULT_ROOT\n            # and then get the path relative to VAULT_ROOT, then prepend \'/\'\n            \n            # Example: For a file in docs/Resources/Concepts/A.md linking to ../../Projects/B.md\n            # 1. Original source was VAULT_ROOT/Resources/Concepts/A.md\n            # 2. Link target relative to original source: ../../Projects/B.md\n            # 3. Absolute path of target in vault: VAULT_ROOT/Projects/B.md\n            # 4. Path relative to VAULT_ROOT: Projects/B.md\n            # 5. Desired link in MkDocs: /Projects/B.md (root-relative to docs)\n\n            # Determine the original source directory for the current Markdown file\n            # This is key to correctly resolving relative links in the source\n            doc_relative_to_vault = file_path.relative_to(DOCS_DIR)\n            original_source_file_path = VAULT_ROOT / doc_relative_to_vault\n            original_source_dir = original_source_file_path.parent\n\n            try:\n                # Resolve the target path relative to the original source directory\n                resolved_abs_path_in_vault = (original_source_dir / normalized_link_path).resolve()\n                \n                # Get the path relative to VAULT_ROOT\n                resolved_relative_to_vault_root = resolved_abs_path_in_vault.relative_to(VAULT_ROOT)\n                \n                # Construct the new root-relative path for MkDocs\n                new_link_path = \"/\" + resolved_relative_to_vault_root.as_posix()\n                \n                # Ensure it points to an .md file, removing extension if roamlinks handles it\n                if new_link_path.endswith(\'.md\'):\n                    new_link_path = new_link_path[:-3] + \'/\' # MkDocs expects directory-style URLs for Markdown\n                                                              # with index.md or auto-generated index\n                # Special handling for \"Second_Brain.md\" which should be \'/Projects/Second_Brain/\'\n                # And Processed_Transcripts which should be \'/Resources/Processed_Transcripts/.../\'\n                if \'second_brain\' in new_link_path.lower():\n                     new_link_path = \"/Projects/Second_Brain/\"\n                elif \'/processed_transcripts/\' in new_link_path.lower():\n                    # Ensure correct path if it was e.g. /Resources/Processed_Transcripts/File\n                    parts = new_link_path.split(\'/Processed_Transcripts/\')\n                    if len(parts) > 1:\n                        file_name = parts[1].strip(\'/\')\n                        if file_name:\n                            new_link_path = f\"/Resources/Processed_Transcripts/{file_name}/\"\n                    \n                # The roamlinks plugin will convert [[Note Name]]\n                # For regular Markdown links, we need to ensure the path is correct\n                \n                print(f\"      Rewriting link in {file_path.name}: \'{link_path}\' -> \'{new_link_path}\'\")\n                return f\"{prefix}{new_link_path}{suffix}\"\n            except ValueError as e:\n                print(f\"      Warning: Could not rewrite link \'{link_path}\' in {file_path.name}: {e}\")\n                # If resolution fails, return original link path to avoid breaking\n                return f\"{prefix}{link_path}{suffix}\"\n        \n        return f\"{prefix}{link_path}{suffix}\" # Return original if not an internal relative link\n\n    content = link_pattern.sub(replace_link, content)\n\n    if content != original_content:\n        with open(file_path, \"w\", encoding=\'utf-8\') as f:\n            f.write(content)\n        print(f\"  Rewrote internal links in: {file_path.relative_to(DOCS_DIR)}\")\n\ndef copy_notes_to_docs():\n    print(\"Copying notes to docs/ directory...\\n\")\n    for source_dir in SOURCE_DIRS:\n        if not source_dir.exists():\n            print(f\"  Warning: Source directory not found: {source_dir}\")\n            continue\n\n        for md_file in source_dir.glob(\"**/*.md\"):\n            relative_path = md_file.relative_to(VAULT_ROOT)\n            destination_path = DOCS_DIR / relative_path\n            destination_path.parent.mkdir(parents=True, exist_ok=True)\n            shutil.copy(md_file, destination_path)\n            print(f\"  Copied: {relative_path}\")\n            \n            # After copying, rewrite internal links in the destination file\n            rewrite_internal_links(destination_path)\n            \n    print(\"\\nFinished copying and rewriting links.\\n\")\n\n\ndef generate_mkdocs_yml():\n    print(f\"Generating {MKDOCS_YML}...\\n\")\n    config = {\n        \'site_name\': \"Obsidian Vault\",\n        \'site_url\': \"https://djlawenda.github.io/obsidianvault/\", # Crucial for GitHub Pages project sites\n        \'theme\': {\n            \'name\': \'material\',\n            \'features\': [\n                \'navigation.tabs\',\n                \'navigation.indexes\',\n                \'toc.integrate\',\n                \'search.suggest\',\n                \'search.highlight\',\n                \'content.tabs.link\',\n                \'content.code.annotate\',\n                \'content.code.copy\',\n            ],\n            \'palette\': [\n                {\n                    \'scheme\': \'default\',\n                    \'primary\': \'indigo\',\n                    \'accent\': \'indigo\',\n                    \'toggle\': {\n                        \'icon\': \'material/brightness-7\',\n                        \'name\': \'Switch to dark mode\'\n                    }\n                },\n                {\n                    \'scheme\': \'slate\',\n                    \'primary\': \'indigo\',\n                    \'accent\': \'indigo\',\n                    \'toggle\': {\n                        \'icon\': \'material/brightness-4\',\n                        \'name\': \'Switch to light mode\'\n                    }\n                }\n            ]\n        },\n        \'plugins\': [\n            \'search\',\n            \'roamlinks\',\n        ],\n        \'extra\': {\n            \'roamlinks\': {\n                \'strip_brackets\': True\n            }\n        },\n        \'nav\': []\n    }\n\n    # Dynamically build navigation from copied files\n    nav_entries = {}\n\n    def add_to_nav(path: Path):\n        # Determine the section (e.g., Resources, Books, Projects)\n        try:\n            # Look for the first directory part that matches a SOURCE_DIR prefix\n            for source_root_path in SOURCE_DIRS:\n                if path.is_relative_to(DOCS_DIR / source_root_path.name):\n                    section_name = source_root_path.name\n                    break\n            else: # If no specific source_root_path matches, put it at the root of nav\n                section_name = \"\" \n            \n            if section_name:\n                relative_to_section = path.relative_to(DOCS_DIR / section_name)\n                parts = (section_name,) + relative_to_section.parts\n            else:\n                parts = path.relative_to(DOCS_DIR).parts\n\n        except ValueError: # path is not relative to DOCS_DIR / source_root_path.name\n            parts = path.relative_to(DOCS_DIR).parts\n        \n        current_level = nav_entries\n        for part in parts[:-1]: # Iterate through directories\n            if part not in current_level:\n                current_level[part] = {}\n            current_level = current_level[part]\n        \n        # Add file, using stem for title and root-relative path for MkDocs\n        file_title = path.stem.replace(\'_\', \' \').replace(\'-\', \' \').title()\n        \n        # Ensure path is always root-relative to docs and ends with / for directory-style links\n        mkdocs_path = \"/\" + str(path.relative_to(DOCS_DIR).as_posix())\n        if mkdocs_path.endswith(\'.md\'):\n            mkdocs_path = mkdocs_path[:-3] + \'/\' # Convert .md to / for clean URLs\n\n        current_level[file_title] = mkdocs_path\n\n    for md_file in DOCS_DIR.glob(\"**/*.md\"):\n        add_to_nav(md_file)\n\n    def build_mkdocs_nav(data):\n        nav = []\n        for key, value in data.items():\n            if isinstance(value, dict):\n                nav.append({key: build_mkdocs_nav(value)})\n            else:\n                nav.append({key: value})\n        return nav\n    \n    config[\'nav\'] = build_mkdocs_nav(nav_entries)\n\n    with open(MKDOCS_YML, \"w\", encoding='utf-8') as f:\n        yaml.dump(config, f, sort_keys=False)\n\nif __name__ == \"__main__\":\n    clean_docs_dir()\n    copy_notes_to_docs()\n    generate_mkdocs_yml()\n    print(\"Documentation build preparation complete. Now run \'mkdocs gh-deploy\' to publish.\")\n
+import os
+import shutil
+from pathlib import Path
+import yaml
+import re # Import re for regular expressions
+
+VAULT_ROOT = Path(__file__).resolve().parent
+DOCS_DIR = VAULT_ROOT / "docs"
+MKDOCS_YML = VAULT_ROOT / "mkdocs.yml"
+
+# Source directories for notes
+SOURCE_DIRS = [
+    VAULT_ROOT / "Resources",
+    VAULT_ROOT / "Resources" / "Processed_Transcripts", # Explicitly include for clarity
+    VAULT_ROOT / "Books" / "Summaries",
+    VAULT_ROOT / "Projects", # Include projects folder
+]
+
+def clean_docs_dir():
+    if DOCS_DIR.exists():
+        print(f"Cleaning existing {DOCS_DIR}...\n")
+        shutil.rmtree(DOCS_DIR)
+    DOCS_DIR.mkdir()
+
+def rewrite_internal_links(file_path: Path):
+    """
+    Rewrites relative internal Markdown links to be root-relative.
+    Specifically targets patterns observed in warnings.
+    """
+    with open(file_path, "r", encoding='utf-8') as f:
+        content = f.read()
+
+    original_content = content # Keep original to check for changes
+
+    # Regex to find Markdown links and image links: [text](link) or ![text](link)
+    # This pattern captures the link path within the parentheses
+    link_pattern = re.compile(r'(\]\(|!\[.*?\]\()(.+?)(\))')
+
+    def replace_link(match):
+        prefix = match.group(1) # e.g., "](", "![]("
+        link_path = match.group(2) # The actual link content
+        suffix = match.group(3) # ")"
+
+        # Only process internal links that look like relative paths
+        if not link_path.startswith(('http://', 'https://', '#', '/')):
+            # Normalize to use / as path separator for consistency
+            normalized_link_path = Path(link_path).as_posix()
+            
+            # Resolve to be relative to VAULT_ROOT first, then to DOCS_DIR
+            # This handles cases like '../../Processed_Transcripts/File.md'
+            # and converts them to '/Resources/Processed_Transcripts/File.md'
+            
+            # Construct absolute path based on original file's assumed location relative to VAULT_ROOT
+            # and then get the path relative to VAULT_ROOT, then prepend '/'
+            
+            # Example: For a file in docs/Resources/Concepts/A.md linking to ../../Projects/B.md
+            # 1. Original source was VAULT_ROOT/Resources/Concepts/A.md
+            # 2. Link target relative to original source: ../../Projects/B.md
+            # 3. Absolute path of target in vault: VAULT_ROOT/Projects/B.md
+            # 4. Path relative to VAULT_ROOT: Projects/B.md
+            # 5. Desired link in MkDocs: /Projects/B.md (root-relative to docs)
+
+            # Determine the original source directory for the current Markdown file
+            # This is key to correctly resolving relative links in the source
+            doc_relative_to_vault = file_path.relative_to(DOCS_DIR)
+            original_source_file_path = VAULT_ROOT / doc_relative_to_vault
+            original_source_dir = original_source_file_path.parent
+
+            try:
+                # Resolve the target path relative to the original source directory
+                resolved_abs_path_in_vault = (original_source_dir / normalized_link_path).resolve()
+                
+                # Get the path relative to VAULT_ROOT
+                resolved_relative_to_vault_root = resolved_abs_path_in_vault.relative_to(VAULT_ROOT)
+                
+                # Construct the new root-relative path for MkDocs
+                new_link_path = "/" + resolved_relative_to_vault_root.as_posix()
+                
+                # Ensure it points to an .md file, removing extension if roamlinks handles it
+                if new_link_path.endswith('.md'):
+                    new_link_path = new_link_path[:-3] + '/' # Convert .md to / for clean URLs
+                                                              # with index.md or auto-generated index
+                # Special handling for "Second_Brain.md" which should be '/Projects/Second_Brain/'
+                # And Processed_Transcripts which should be '/Resources/Processed_Transcripts/.../'
+                if 'second_brain' in new_link_path.lower():
+                     new_link_path = "/Projects/Second_Brain/"
+                elif '/processed_transcripts/' in new_link_path.lower():
+                    # Ensure correct path if it was e.g. /Resources/Processed_Transcripts/File
+                    parts = new_link_path.split('/Processed_Transcripts/')
+                    if len(parts) > 1:
+                        file_name = parts[1].strip('/')
+                        if file_name:
+                            new_link_path = f"/Resources/Processed_Transcripts/{file_name}/"
+                    
+                # The roamlinks plugin will convert [[Note Name]]
+                # For regular Markdown links, we need to ensure the path is correct
+                
+                print(f"      Rewriting link in {file_path.name}: '{link_path}' -> '{new_link_path}'")
+                return f"{prefix}{new_link_path}{suffix}"
+            except ValueError as e:
+                print(f"      Warning: Could not rewrite link '{link_path}' in {file_path.name}: {e}")
+                # If resolution fails, return original link path to avoid breaking
+                return f"{prefix}{link_path}{suffix}"
+        
+        return f"{prefix}{link_path}{suffix}" # Return original if not an internal relative link
+
+    content = link_pattern.sub(replace_link, content)
+
+    if content != original_content:
+        with open(file_path, "w", encoding='utf-8') as f:
+            f.write(content)
+        print(f"  Rewrote internal links in: {file_path.relative_to(DOCS_DIR)}")
+
+def copy_notes_to_docs():
+    print("Copying notes to docs/ directory...\n")
+    for source_dir in SOURCE_DIRS:
+        if not source_dir.exists():
+            print(f"  Warning: Source directory not found: {source_dir}")
+            continue
+
+        for md_file in source_dir.glob("**/*.md"):
+            relative_path = md_file.relative_to(VAULT_ROOT)
+            destination_path = DOCS_DIR / relative_path
+            destination_path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy(md_file, destination_path)
+            print(f"  Copied: {relative_path}")
+            
+            # After copying, rewrite internal links in the destination file
+            rewrite_internal_links(destination_path)
+            
+    print("\nFinished copying and rewriting links.\n")
+
+
+def generate_mkdocs_yml():
+    print(f"Generating {MKDOCS_YML}...\n")
+    config = {
+        'site_name': "Obsidian Vault",
+        'site_url': "https://djlawenda.github.io/obsidianvault/", # Crucial for GitHub Pages project sites
+        'theme': {
+            'name': 'material',
+            'features': [
+                'navigation.tabs',
+                'navigation.indexes',
+                'toc.integrate',
+                'search.suggest',
+                'search.highlight',
+                'content.tabs.link',
+                'content.code.annotate',
+                'content.code.copy',
+            ],
+            'palette': [
+                {
+                    'scheme': 'default',
+                    'primary': 'indigo',
+                    'accent': 'indigo',
+                    'toggle': {
+                        'icon': 'material/brightness-7',
+                        'name': 'Switch to dark mode'
+                    }
+                },
+                {
+                    'scheme': 'slate',
+                    'primary': 'indigo',
+                    'accent': 'indigo',
+                    'toggle': {
+                        'icon': 'material/brightness-4',
+                        'name': 'Switch to light mode'
+                    }
+                }
+            ]
+        },
+        'plugins': [
+            'search',
+            'roamlinks',
+        ],
+        'extra': {
+            'roamlinks': {
+                'strip_brackets': True
+            }
+        },
+        'nav': []
+    }
+
+    # Dynamically build navigation from copied files
+    nav_entries = {}
+
+    def add_to_nav(path: Path):
+        # Determine the section (e.g., Resources, Books, Projects)
+        try:
+            # Look for the first directory part that matches a SOURCE_DIR prefix
+            for source_root_path in SOURCE_DIRS:
+                if path.is_relative_to(DOCS_DIR / source_root_path.name):
+                    section_name = source_root_path.name
+                    break
+            else: # If no specific source_root_path matches, put it at the root of nav
+                section_name = "" 
+            
+            if section_name:
+                relative_to_section = path.relative_to(DOCS_DIR / section_name)
+                parts = (section_name,) + relative_to_section.parts
+            else:
+                parts = path.relative_to(DOCS_DIR).parts
+        except ValueError: # path is not relative to DOCS_DIR / source_root_path.name
+            parts = path.relative_to(DOCS_DIR).parts
+        
+        current_level = nav_entries
+        for part in parts[:-1]: # Iterate through directories
+            if part not in current_level:
+                current_level[part] = {}
+            current_level = current_level[part]
+        
+        # Add file, using stem for title and root-relative path for MkDocs
+        file_title = path.stem.replace('_', ' ').replace('-', ' ').title()
+        
+        # Ensure path is always root-relative to docs and ends with / for directory-style links
+        mkdocs_path = "/" + str(path.relative_to(DOCS_DIR).as_posix())
+        if mkdocs_path.endswith('.md'):
+            mkdocs_path = mkdocs_path[:-3] + '/' # Convert .md to / for clean URLs
+
+        current_level[file_title] = mkdocs_path
+
+    for md_file in DOCS_DIR.glob("**/*.md"):
+        add_to_nav(md_file)
+
+    def build_mkdocs_nav(data):
+        nav = []
+        for key, value in data.items():
+            if isinstance(value, dict):
+                nav.append({key: build_mkdocs_nav(value)})
+            else:
+                nav.append({key: value})
+        return nav
+    
+    config['nav'] = build_mkdocs_nav(nav_entries)
+
+    with open(MKDOCS_YML, "w", encoding='utf-8') as f:
+        yaml.dump(config, f, sort_keys=False)
+
+if __name__ == "__main__":
+    clean_docs_dir()
+    copy_notes_to_docs()
+    generate_mkdocs_yml()
+    print("Documentation build preparation complete. Now run 'mkdocs gh-deploy' to publish.")

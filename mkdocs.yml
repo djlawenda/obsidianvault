@@ -33,88 +33,88 @@ extra:
 nav:
 - Resources:
   - Concepts:
-    - Extensibility: Resources/Concepts/Extensibility.md
-    - Kubernetes Api: Resources/Concepts/Kubernetes_Api.md
-    - Control Plane Deployment Options: Resources/Concepts/Control_Plane_Deployment_Options.md
-    - Managed Kubernetes Services: Resources/Concepts/Managed_Kubernetes_Services.md
-    - Traditional Deployment: Resources/Concepts/Traditional_Deployment.md
-    - Kube Proxy: Resources/Concepts/Kube_Proxy.md
-    - Node: Resources/Concepts/Node.md
-    - Self Hosted Kubernetes: Resources/Concepts/Self_Hosted_Kubernetes.md
-    - Virtualized Deployment: Resources/Concepts/Virtualized_Deployment.md
-    - Network Plugin: Resources/Concepts/Network_Plugin.md
-    - Cluster Management Tools: Resources/Concepts/Cluster_Management_Tools.md
-    - Application Services Integration: Resources/Concepts/Application_Services_Integration.md
-    - Lease: Resources/Concepts/Lease.md
-    - Cluster Dns: Resources/Concepts/Cluster_Dns.md
-    - Node Agent: Resources/Concepts/Node_Agent.md
-    - Container: Resources/Concepts/Container.md
-    - Automated Rollouts And Rollbacks: Resources/Concepts/Automated_Rollouts_And_Rollbacks.md
-    - Addons: Resources/Concepts/Addons.md
-    - Tolerations: Resources/Concepts/Tolerations.md
-    - Kubelet: Resources/Concepts/Kubelet.md
-    - Load Balancing: Resources/Concepts/Load_Balancing.md
-    - Container Runtime: Resources/Concepts/Container_Runtime.md
-    - Storage Orchestration: Resources/Concepts/Storage_Orchestration.md
-    - Network Proxy: Resources/Concepts/Network_Proxy.md
-    - Automation: Resources/Concepts/Automation.md
-    - Node Object: Resources/Concepts/Node_Object.md
-    - Batch Execution: Resources/Concepts/Batch_Execution.md
-    - Architecture Variations: Resources/Concepts/Architecture_Variations.md
-    - Controller: Resources/Concepts/Controller.md
-    - Node Controller: Resources/Concepts/Node_Controller.md
-    - Cloud Provider: Resources/Concepts/Cloud_Provider.md
-    - Platform As A Service Paas: Resources/Concepts/Platform_As_A_Service_Paas.md
-    - Labels: Resources/Concepts/Labels.md
-    - Secret And Configuration Management: Resources/Concepts/Secret_And_Configuration_Management.md
-    - Orchestration: Resources/Concepts/Orchestration.md
-    - Container Resource Monitoring: Resources/Concepts/Container_Resource_Monitoring.md
-    - Automatic Bin Packing: Resources/Concepts/Automatic_Bin_Packing.md
-    - Pod: Resources/Concepts/Pod.md
-    - Api Server: Resources/Concepts/Api_Server.md
-    - Service Discovery: Resources/Concepts/Service_Discovery.md
-    - Ipv4Ipv6 Dual Stack: Resources/Concepts/Ipv4Ipv6_Dual_Stack.md
-    - Declarative Configuration: Resources/Concepts/Declarative_Configuration.md
-    - Self Healing: Resources/Concepts/Self_Healing.md
-    - Scheduler: Resources/Concepts/Scheduler.md
-    - Key Value Store: Resources/Concepts/Key_Value_Store.md
-    - Taints: Resources/Concepts/Taints.md
-    - Static Pods: Resources/Concepts/Static_Pods.md
-    - Cluster Level Logging: Resources/Concepts/Cluster_Level_Logging.md
-    - Virtual Machine Vm: Resources/Concepts/Virtual_Machine_Vm.md
-    - Web Ui Dashboard: Resources/Concepts/Web_Ui_Dashboard.md
-    - Containerized Workloads: Resources/Concepts/Containerized_Workloads.md
-    - Horizontal Scaling: Resources/Concepts/Horizontal_Scaling.md
+    - Extensibility: /Resources/Concepts/Extensibility/
+    - Kubernetes Api: /Resources/Concepts/Kubernetes_Api/
+    - Control Plane Deployment Options: /Resources/Concepts/Control_Plane_Deployment_Options/
+    - Managed Kubernetes Services: /Resources/Concepts/Managed_Kubernetes_Services/
+    - Traditional Deployment: /Resources/Concepts/Traditional_Deployment/
+    - Kube Proxy: /Resources/Concepts/Kube_Proxy/
+    - Node: /Resources/Concepts/Node/
+    - Self Hosted Kubernetes: /Resources/Concepts/Self_Hosted_Kubernetes/
+    - Virtualized Deployment: /Resources/Concepts/Virtualized_Deployment/
+    - Network Plugin: /Resources/Concepts/Network_Plugin/
+    - Cluster Management Tools: /Resources/Concepts/Cluster_Management_Tools/
+    - Application Services Integration: /Resources/Concepts/Application_Services_Integration/
+    - Lease: /Resources/Concepts/Lease/
+    - Cluster Dns: /Resources/Concepts/Cluster_Dns/
+    - Node Agent: /Resources/Concepts/Node_Agent/
+    - Container: /Resources/Concepts/Container/
+    - Automated Rollouts And Rollbacks: /Resources/Concepts/Automated_Rollouts_And_Rollbacks/
+    - Addons: /Resources/Concepts/Addons/
+    - Tolerations: /Resources/Concepts/Tolerations/
+    - Kubelet: /Resources/Concepts/Kubelet/
+    - Load Balancing: /Resources/Concepts/Load_Balancing/
+    - Container Runtime: /Resources/Concepts/Container_Runtime/
+    - Storage Orchestration: /Resources/Concepts/Storage_Orchestration/
+    - Network Proxy: /Resources/Concepts/Network_Proxy/
+    - Automation: /Resources/Concepts/Automation/
+    - Node Object: /Resources/Concepts/Node_Object/
+    - Batch Execution: /Resources/Concepts/Batch_Execution/
+    - Architecture Variations: /Resources/Concepts/Architecture_Variations/
+    - Controller: /Resources/Concepts/Controller/
+    - Node Controller: /Resources/Concepts/Node_Controller/
+    - Cloud Provider: /Resources/Concepts/Cloud_Provider/
+    - Platform As A Service Paas: /Resources/Concepts/Platform_As_A_Service_Paas/
+    - Labels: /Resources/Concepts/Labels/
+    - Secret And Configuration Management: /Resources/Concepts/Secret_And_Configuration_Management/
+    - Orchestration: /Resources/Concepts/Orchestration/
+    - Container Resource Monitoring: /Resources/Concepts/Container_Resource_Monitoring/
+    - Automatic Bin Packing: /Resources/Concepts/Automatic_Bin_Packing/
+    - Pod: /Resources/Concepts/Pod/
+    - Api Server: /Resources/Concepts/Api_Server/
+    - Service Discovery: /Resources/Concepts/Service_Discovery/
+    - Ipv4Ipv6 Dual Stack: /Resources/Concepts/Ipv4Ipv6_Dual_Stack/
+    - Declarative Configuration: /Resources/Concepts/Declarative_Configuration/
+    - Self Healing: /Resources/Concepts/Self_Healing/
+    - Scheduler: /Resources/Concepts/Scheduler/
+    - Key Value Store: /Resources/Concepts/Key_Value_Store/
+    - Taints: /Resources/Concepts/Taints/
+    - Static Pods: /Resources/Concepts/Static_Pods/
+    - Cluster Level Logging: /Resources/Concepts/Cluster_Level_Logging/
+    - Virtual Machine Vm: /Resources/Concepts/Virtual_Machine_Vm/
+    - Web Ui Dashboard: /Resources/Concepts/Web_Ui_Dashboard/
+    - Containerized Workloads: /Resources/Concepts/Containerized_Workloads/
+    - Horizontal Scaling: /Resources/Concepts/Horizontal_Scaling/
   - Technologies:
-    - Kube Controller Manager: Resources/Technologies/Kube_Controller_Manager.md
-    - Kube Scheduler: Resources/Technologies/Kube_Scheduler.md
-    - Containerd: Resources/Technologies/Containerd.md
-    - Kops: Resources/Technologies/Kops.md
-    - Kube Proxy: Resources/Technologies/Kube_Proxy.md
-    - Kubernetes: Resources/Technologies/Kubernetes.md
-    - Etcd: Resources/Technologies/Etcd.md
-    - Job Controller: Resources/Technologies/Job_Controller.md
-    - Kubeadm: Resources/Technologies/Kubeadm.md
-    - Open Service Broker: Resources/Technologies/Open_Service_Broker.md
-    - Kubectl: Resources/Technologies/Kubectl.md
-    - Kube Apiserver: Resources/Technologies/Kube_Apiserver.md
-    - Kubelet: Resources/Technologies/Kubelet.md
-    - Serviceaccount Controller: Resources/Technologies/Serviceaccount_Controller.md
-    - Endpointslice Controller: Resources/Technologies/Endpointslice_Controller.md
-    - Cloud Controller Manager: Resources/Technologies/Cloud_Controller_Manager.md
-    - Node Controller: Resources/Technologies/Node_Controller.md
-    - Kubespray: Resources/Technologies/Kubespray.md
-    - Cri O: Resources/Technologies/Cri_O.md
-    - Borg: Resources/Technologies/Borg.md
-    - Docker: Resources/Technologies/Docker.md
+    - Kube Controller Manager: /Resources/Technologies/Kube_Controller_Manager/
+    - Kube Scheduler: /Resources/Technologies/Kube_Scheduler/
+    - Containerd: /Resources/Technologies/Containerd/
+    - Kops: /Resources/Technologies/Kops/
+    - Kube Proxy: /Resources/Technologies/Kube_Proxy/
+    - Kubernetes: /Resources/Technologies/Kubernetes/
+    - Etcd: /Resources/Technologies/Etcd/
+    - Job Controller: /Resources/Technologies/Job_Controller/
+    - Kubeadm: /Resources/Technologies/Kubeadm/
+    - Open Service Broker: /Resources/Technologies/Open_Service_Broker/
+    - Kubectl: /Resources/Technologies/Kubectl/
+    - Kube Apiserver: /Resources/Technologies/Kube_Apiserver/
+    - Kubelet: /Resources/Technologies/Kubelet/
+    - Serviceaccount Controller: /Resources/Technologies/Serviceaccount_Controller/
+    - Endpointslice Controller: /Resources/Technologies/Endpointslice_Controller/
+    - Cloud Controller Manager: /Resources/Technologies/Cloud_Controller_Manager/
+    - Node Controller: /Resources/Technologies/Node_Controller/
+    - Kubespray: /Resources/Technologies/Kubespray/
+    - Cri O: /Resources/Technologies/Cri_O/
+    - Borg: /Resources/Technologies/Borg/
+    - Docker: /Resources/Technologies/Docker/
   - Processed_Transcripts:
-    - Kubernetes Overview: Resources/Processed_Transcripts/Kubernetes Overview.md
-    - Cluster Architecture: Resources/Processed_Transcripts/Cluster Architecture.md
-    - Kubernetes Nodes: Resources/Processed_Transcripts/Kubernetes Nodes.md
+    - Kubernetes Overview: /Resources/Processed_Transcripts/Kubernetes Overview/
+    - Cluster Architecture: /Resources/Processed_Transcripts/Cluster Architecture/
+    - Kubernetes Nodes: /Resources/Processed_Transcripts/Kubernetes Nodes/
   - Hubs:
-    - Kubernetes: Resources/Hubs/Kubernetes.md
-    - Containerization: Resources/Hubs/Containerization.md
-    - Control Plane: Resources/Hubs/Control_Plane.md
-    - Node Components: Resources/Hubs/Node_Components.md
+    - Kubernetes: /Resources/Hubs/Kubernetes/
+    - Containerization: /Resources/Hubs/Containerization/
+    - Control Plane: /Resources/Hubs/Control_Plane/
+    - Node Components: /Resources/Hubs/Node_Components/
 - Projects:
-  - Second Brain: Projects/Second_Brain.md
+  - Second Brain: /Projects/Second_Brain/
