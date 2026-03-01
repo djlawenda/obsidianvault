@@ -173,15 +173,21 @@ def generate_mkdocs_yml():
     for md_file in DOCS_DIR.glob("**/*.md"):
         add_to_nav(md_file)
 
-    def build_mkdocs_nav(data):
+    def build_mkdocs_nav(data, current_path_debug=""): # Added current_path_debug for debugging
         nav = []
         # Sort items: directories first, then files, alphabetically
-        sorted_keys = sorted(data.keys(), key=lambda k: (isinstance(data[k], str), k))
+        sorted_keys = sorted(data.keys(), key=lambda k: (isinstance(data[k], str), k.lower())) 
+
         for key in sorted_keys:
             value = data[key]
+            full_item_path_debug = f"{current_path_debug}/{key}" # For debugging
             if isinstance(value, dict):
-                nav.append({key: build_mkdocs_nav(value)})
+                # This is a directory/section
+                print(f"        Nav item (dir): {full_item_path_debug}") # Debug print
+                nav.append({key: build_mkdocs_nav(value, full_item_path_debug)}) # Pass debug path recursively
             else:
+                # This is a file/page
+                print(f"        Nav item (file): {full_item_path_debug} -> {value}") # Debug print
                 nav.append({key: value})
         return nav
     
