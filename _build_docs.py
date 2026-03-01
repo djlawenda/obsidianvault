@@ -10,7 +10,9 @@ MKDOCS_YML = VAULT_ROOT / "mkdocs.yml"
 # Source directories for notes
 SOURCE_DIRS = [
     VAULT_ROOT / "Resources",
+    VAULT_ROOT / "Resources" / "Processed_Transcripts", # Explicitly include for clarity
     VAULT_ROOT / "Books" / "Summaries",
+    VAULT_ROOT / "Projects", # Include projects folder
 ]
 
 def clean_docs_dir():

@@ -116,3 +116,5 @@ nav:
     - Containerization: Resources/Hubs/Containerization.md
     - Control Plane: Resources/Hubs/Control_Plane.md
     - Node Components: Resources/Hubs/Node_Components.md
+- Projects:
+  - Second Brain: Projects/Second_Brain.md
