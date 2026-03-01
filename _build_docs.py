@@ -135,63 +135,31 @@ def generate_mkdocs_yml():
         },
         'plugins': [
             'search',
-            'roamlinks',
+            # 'roamlinks', # TEMPORARILY DISABLED
         ],
         'extra': {
-            'roamlinks': {
-                'strip_brackets': True
-            }
+            # 'roamlinks': { # TEMPORARILY DISABLED
+            #     'strip_brackets': True
+            # }
         },
-        'nav': []
+        'nav': [] # Will be populated with a flattened list
     }
 
-    # Dynamically build navigation from copied files
-    nav_entries = {}
-
-    def add_to_nav(path: Path):
-        # Get path relative to DOCS_DIR
-        relative_doc_path = path.relative_to(DOCS_DIR)
-        parts = relative_doc_path.parts # e.g., ('Resources', 'Concepts', 'My_Concept.md')
-
-        current_level = nav_entries
-        for part in parts[:-1]: # Iterate through directories
-            if part not in current_level:
-                current_level[part] = {}
-            current_level = current_level[part]
+    # Dynamically build a FLAT navigation list from copied files
+    flat_nav = []
+    for md_file in sorted(DOCS_DIR.glob("**/*.md")):
+        relative_doc_path = md_file.relative_to(DOCS_DIR).as_posix()
+        file_title = md_file.stem.replace('_', ' ').replace('-', ' ').title()
         
-        # Add file, using stem for title and root-relative path for MkDocs
-        file_title = path.stem.replace('_', ' ').replace('-', ' ').title()
-        
-        # Ensure path is always root-relative to docs and ends with / for directory-style links
-        mkdocs_path = "/" + relative_doc_path.as_posix()
+        # MkDocs expects clean URLs, so convert .md to / for directory-style links
+        mkdocs_path = relative_doc_path
         if mkdocs_path.endswith('.md'):
-            mkdocs_path = mkdocs_path[:-3] + '/' # Convert .md to / for clean URLs
+            mkdocs_path = mkdocs_path[:-3] + '/'
+        
+        flat_nav.append({file_title: mkdocs_path})
+        print(f"        Adding to flat nav: Title='{file_title}', Path='{mkdocs_path}'") # Debug print
 
-        print(f"        Adding to nav: Title='{file_title}', Path='{mkdocs_path}'") # ADDED DEBUG PRINT
-        current_level[file_title] = mkdocs_path
-
-    for md_file in DOCS_DIR.glob("**/*.md"):
-        add_to_nav(md_file)
-
-    def build_mkdocs_nav(data, current_path_debug=""): # Added current_path_debug for debugging
-        nav = []
-        # Sort items: directories first, then files, alphabetically
-        sorted_keys = sorted(data.keys(), key=lambda k: (isinstance(data[k], str), k.lower())) 
-
-        for key in sorted_keys:
-            value = data[key]
-            full_item_path_debug = f"{current_path_debug}/{key}" # For debugging
-            if isinstance(value, dict):
-                # This is a directory/section
-                print(f"        Nav item (dir): {full_item_path_debug}") # Debug print
-                nav.append({key: build_mkdocs_nav(value, full_item_path_debug)}) # Pass debug path recursively
-            else:
-                # This is a file/page
-                print(f"        Nav item (file): {full_item_path_debug} -> {value}") # Debug print
-                nav.append({key: value})
-        return nav
-    
-    config['nav'] = build_mkdocs_nav(nav_entries)
+    config['nav'] = flat_nav
 
     with open(MKDOCS_YML, "w", encoding='utf-8') as f:
         yaml.dump(config, f, sort_keys=False)
