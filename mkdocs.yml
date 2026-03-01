@@ -26,6 +26,10 @@ theme:
       name: Switch to light mode
 plugins:
 - search
+- roamlinks
+extra:
+  roamlinks:
+    strip_brackets: true
 nav:
 - Resources:
   - Concepts:

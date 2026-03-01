@@ -73,9 +73,13 @@ def generate_mkdocs_yml():
         },
         'plugins': [
             'search',
-            # Add plugins for Obsidian-style links if needed, e.g., mkdocs-macros, mkdocs-mermaid
-            # You might need to install these: pip install mkdocs-macros-plugin mkdocs-mermaid2-plugin
+            'roamlinks',
         ],
+        'extra': {
+            'roamlinks': {
+                'strip_brackets': True
+            }
+        },
         'nav': []
     }
 
