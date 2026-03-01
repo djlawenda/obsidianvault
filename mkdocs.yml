@@ -1,4 +1,5 @@
 site_name: Obsidian Vault
+site_url: https://djlawenda.github.io/obsidianvault/
 theme:
   name: material
   features:
