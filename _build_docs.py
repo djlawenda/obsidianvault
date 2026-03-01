@@ -24,68 +24,49 @@ def clean_docs_dir():
 
 def rewrite_internal_links(file_path: Path):
     """
-    Rewrites relative internal Markdown links to be root-relative.
-    Specifically targets patterns observed in warnings.
+    Rewrites relative internal Markdown links to be relative to the current file's location
+    within the docs/ structure.
     """
     with open(file_path, "r", encoding='utf-8') as f:
         content = f.read()
 
-    original_content = content # Keep original to check for changes
+    original_content = content
 
-    # Regex to find Markdown links and image links: [text](link) or ![text](link)
-    # This pattern captures the link path within the parentheses
     link_pattern = re.compile(r'(\]\(|!\[.*?\]\()(.+?)(\))')
 
     def replace_link(match):
-        prefix = match.group(1) # e.g., "](", "![]("
-        link_path = match.group(2) # The actual link content
-        suffix = match.group(3) # ")"
+        prefix = match.group(1)
+        link_path = match.group(2)
+        suffix = match.group(3)
 
-        # Only process internal links that look like relative paths
+        # Only process internal links that are not absolute URLs, anchors, or already root-relative
         if not link_path.startswith(('http://', 'https://', '#', '/')):
-            # Normalize to use / as path separator for consistency
             normalized_link_path = Path(link_path).as_posix()
             
-            # Determine the original source directory for the current Markdown file
-            doc_relative_to_vault = file_path.relative_to(DOCS_DIR)
-            original_source_file_path = VAULT_ROOT / doc_relative_to_vault
-            original_source_dir = original_source_file_path.parent
-
             try:
-                # Resolve the target path relative to the original source directory
-                resolved_abs_path_in_vault = (original_source_dir / normalized_link_path).resolve()
-                
-                # We need the path relative to DOCS_DIR
-                # Find which SOURCE_DIR the resolved_abs_path_in_vault belongs to
-                new_doc_relative_path = None
-                for src_dir_path in SOURCE_DIRS:
-                    try:
-                        # If the absolute path is within a source directory,
-                        # get its path relative to that source directory,
-                        # then prepend the source directory's name
-                        relative_to_src = resolved_abs_path_in_vault.relative_to(src_dir_path)
-                        new_doc_relative_path = Path(src_dir_path.name) / relative_to_src
-                        break
-                    except ValueError:
-                        continue # Not in this source_dir, try next
-                
-                if new_doc_relative_path is None:
-                    # Fallback if it's not directly within a SOURCE_DIR, e.g., if it's linking to something at VAULT_ROOT directly
-                    new_doc_relative_path = resolved_abs_path_in_vault.relative_to(VAULT_ROOT)
+                # 1. Determine the original absolute path of the current file in the vault
+                doc_relative_to_docs_root = file_path.relative_to(DOCS_DIR)
+                original_source_file_in_vault = VAULT_ROOT / doc_relative_to_docs_root
+                original_source_dir_in_vault = original_source_file_in_vault.parent
 
-                new_link_path = "/" + new_doc_relative_path.as_posix()
-                
+                # 2. Resolve the target link's absolute path within the original vault structure
+                resolved_abs_path_in_vault = (original_source_dir_in_vault / normalized_link_path).resolve()
+
+                # 3. Get the target path relative to the current file's directory within DOCS_DIR
+                target_path_in_docs = DOCS_DIR / resolved_abs_path_in_vault.relative_to(VAULT_ROOT)
+                new_link_path = target_path_in_docs.relative_to(file_path.parent).as_posix()
+
+                # Convert .md extension to / for clean URLs if it's a Markdown file
                 if new_link_path.endswith('.md'):
-                    new_link_path = new_link_path[:-3] + '/' # Convert .md to / for clean URLs
+                    new_link_path = new_link_path[:-3] + '/'
                 
                 print(f"      Rewriting link in {file_path.name}: '{link_path}' -> '{new_link_path}'")
                 return f"{prefix}{new_link_path}{suffix}"
             except ValueError as e:
                 print(f"      Warning: Could not rewrite link '{link_path}' in {file_path.name}: {e}")
-                # If resolution fails, return original link path to avoid breaking
                 return f"{prefix}{link_path}{suffix}"
         
-        return f"{prefix}{link_path}{suffix}" # Return original if not an internal relative link
+        return f"{prefix}{link_path}{suffix}"
 
     content = link_pattern.sub(replace_link, content)
 
@@ -195,8 +176,7 @@ def generate_mkdocs_yml():
         nav = []
         # Sort items: directories first, then files, alphabetically
         sorted_keys = sorted(data.keys(), key=lambda k: (isinstance(data[k], str), k))
-        for key in sorted_keys:
-            value = data[key]
+        for key, value in data.items(): # Changed to iterate over `data.items()` directly
             if isinstance(value, dict):
                 nav.append({key: build_mkdocs_nav(value)})
             else:
