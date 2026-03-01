@@ -167,6 +167,7 @@ def generate_mkdocs_yml():
         if mkdocs_path.endswith('.md'):
             mkdocs_path = mkdocs_path[:-3] + '/' # Convert .md to / for clean URLs
 
+        print(f"        Adding to nav: Title='{file_title}', Path='{mkdocs_path}'") # ADDED DEBUG PRINT
         current_level[file_title] = mkdocs_path
 
     for md_file in DOCS_DIR.glob("**/*.md"):
@@ -176,7 +177,8 @@ def generate_mkdocs_yml():
         nav = []
         # Sort items: directories first, then files, alphabetically
         sorted_keys = sorted(data.keys(), key=lambda k: (isinstance(data[k], str), k))
-        for key, value in data.items(): # Changed to iterate over `data.items()` directly
+        for key in sorted_keys:
+            value = data[key]
             if isinstance(value, dict):
                 nav.append({key: build_mkdocs_nav(value)})
             else:
