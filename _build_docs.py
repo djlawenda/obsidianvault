@@ -67,7 +67,7 @@ def rewrite_internal_links(file_path: Path):
                         new_doc_relative_path = Path(src_dir_path.name) / relative_to_src
                         break
                     except ValueError:
-                        continue
+                        continue # Not in this source_dir, try next
                 
                 if new_doc_relative_path is None:
                     # Fallback if it's not directly within a SOURCE_DIR, e.g., if it's linking to something at VAULT_ROOT directly
@@ -168,24 +168,10 @@ def generate_mkdocs_yml():
     nav_entries = {}
 
     def add_to_nav(path: Path):
-        # Determine the section (e.g., Resources, Books, Projects)
-        try:
-            # Look for the first directory part that matches a SOURCE_DIR prefix
-            for source_root_path in SOURCE_DIRS:
-                if path.is_relative_to(DOCS_DIR / source_root_path.name):
-                    section_name = source_root_path.name
-                    break
-            else: # If no specific source_root_path matches, put it at the root of nav
-                section_name = "" 
-            
-            if section_name:
-                relative_to_section = path.relative_to(DOCS_DIR / section_name)
-                parts = (section_name,) + relative_to_section.parts
-            else:
-                parts = path.relative_to(DOCS_DIR).parts
-        except ValueError: # path is not relative to DOCS_DIR / source_root_path.name
-            parts = path.relative_to(DOCS_DIR).parts
-        
+        # Get path relative to DOCS_DIR
+        relative_doc_path = path.relative_to(DOCS_DIR)
+        parts = relative_doc_path.parts # e.g., ('Resources', 'Concepts', 'My_Concept.md')
+
         current_level = nav_entries
         for part in parts[:-1]: # Iterate through directories
             if part not in current_level:
@@ -196,7 +182,7 @@ def generate_mkdocs_yml():
         file_title = path.stem.replace('_', ' ').replace('-', ' ').title()
         
         # Ensure path is always root-relative to docs and ends with / for directory-style links
-        mkdocs_path = "/" + str(path.relative_to(DOCS_DIR).as_posix())
+        mkdocs_path = "/" + relative_doc_path.as_posix()
         if mkdocs_path.endswith('.md'):
             mkdocs_path = mkdocs_path[:-3] + '/' # Convert .md to / for clean URLs
 
@@ -207,7 +193,10 @@ def generate_mkdocs_yml():
 
     def build_mkdocs_nav(data):
         nav = []
-        for key, value in data.items():
+        # Sort items: directories first, then files, alphabetically
+        sorted_keys = sorted(data.keys(), key=lambda k: (isinstance(data[k], str), k))
+        for key in sorted_keys:
+            value = data[key]
             if isinstance(value, dict):
                 nav.append({key: build_mkdocs_nav(value)})
             else:
