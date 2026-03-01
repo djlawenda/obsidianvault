@@ -1,0 +1,13 @@
+# Explicitly ignore these files and directories
+.env
+.venv/
+docker-compose.yml
+fix_note.py
+test_execution.py
+.obsidian/
+Books/Inbox/
+Archives/
+Areas/
+Excalidraw/
+knowledge-graph/
+Projects/
