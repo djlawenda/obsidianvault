@@ -46,22 +46,7 @@ def rewrite_internal_links(file_path: Path):
             # Normalize to use / as path separator for consistency
             normalized_link_path = Path(link_path).as_posix()
             
-            # Resolve to be relative to VAULT_ROOT first, then to DOCS_DIR
-            # This handles cases like '../../Processed_Transcripts/File.md'
-            # and converts them to '/Resources/Processed_Transcripts/File.md'
-            
-            # Construct absolute path based on original file's assumed location relative to VAULT_ROOT
-            # and then get the path relative to VAULT_ROOT, then prepend '/'
-            
-            # Example: For a file in docs/Resources/Concepts/A.md linking to ../../Projects/B.md
-            # 1. Original source was VAULT_ROOT/Resources/Concepts/A.md
-            # 2. Link target relative to original source: ../../Projects/B.md
-            # 3. Absolute path of target in vault: VAULT_ROOT/Projects/B.md
-            # 4. Path relative to VAULT_ROOT: Projects/B.md
-            # 5. Desired link in MkDocs: /Projects/B.md (root-relative to docs)
-
             # Determine the original source directory for the current Markdown file
-            # This is key to correctly resolving relative links in the source
             doc_relative_to_vault = file_path.relative_to(DOCS_DIR)
             original_source_file_path = VAULT_ROOT / doc_relative_to_vault
             original_source_dir = original_source_file_path.parent
@@ -70,30 +55,28 @@ def rewrite_internal_links(file_path: Path):
                 # Resolve the target path relative to the original source directory
                 resolved_abs_path_in_vault = (original_source_dir / normalized_link_path).resolve()
                 
-                # Get the path relative to VAULT_ROOT
-                resolved_relative_to_vault_root = resolved_abs_path_in_vault.relative_to(VAULT_ROOT)
+                # We need the path relative to DOCS_DIR
+                # Find which SOURCE_DIR the resolved_abs_path_in_vault belongs to
+                new_doc_relative_path = None
+                for src_dir_path in SOURCE_DIRS:
+                    try:
+                        # If the absolute path is within a source directory,
+                        # get its path relative to that source directory,
+                        # then prepend the source directory's name
+                        relative_to_src = resolved_abs_path_in_vault.relative_to(src_dir_path)
+                        new_doc_relative_path = Path(src_dir_path.name) / relative_to_src
+                        break
+                    except ValueError:
+                        continue
                 
-                # Construct the new root-relative path for MkDocs
-                new_link_path = "/" + resolved_relative_to_vault_root.as_posix()
+                if new_doc_relative_path is None:
+                    # Fallback if it's not directly within a SOURCE_DIR, e.g., if it's linking to something at VAULT_ROOT directly
+                    new_doc_relative_path = resolved_abs_path_in_vault.relative_to(VAULT_ROOT)
+
+                new_link_path = "/" + new_doc_relative_path.as_posix()
                 
-                # Ensure it points to an .md file, removing extension if roamlinks handles it
                 if new_link_path.endswith('.md'):
                     new_link_path = new_link_path[:-3] + '/' # Convert .md to / for clean URLs
-                                                              # with index.md or auto-generated index
-                # Special handling for "Second_Brain.md" which should be '/Projects/Second_Brain/'
-                # And Processed_Transcripts which should be '/Resources/Processed_Transcripts/.../'
-                if 'second_brain' in new_link_path.lower():
-                     new_link_path = "/Projects/Second_Brain/"
-                elif '/processed_transcripts/' in new_link_path.lower():
-                    # Ensure correct path if it was e.g. /Resources/Processed_Transcripts/File
-                    parts = new_link_path.split('/Processed_Transcripts/')
-                    if len(parts) > 1:
-                        file_name = parts[1].strip('/')
-                        if file_name:
-                            new_link_path = f"/Resources/Processed_Transcripts/{file_name}/"
-                    
-                # The roamlinks plugin will convert [[Note Name]]
-                # For regular Markdown links, we need to ensure the path is correct
                 
                 print(f"      Rewriting link in {file_path.name}: '{link_path}' -> '{new_link_path}'")
                 return f"{prefix}{new_link_path}{suffix}"
