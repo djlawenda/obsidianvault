@@ -1,43 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_10_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Addons/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_1_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Api_Server/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_2_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Application_Services_Integration/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_3_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Architecture_Variations/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_4_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Automated_Rollouts_And_Rollbacks/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_5_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Automatic_Bin_Packing/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_6_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Automation/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_7_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Batch_Execution/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_8_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Cloud_Provider/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://djlawenda.github.io/obsidianvault/Books/Summaries/Designing%20Data%20Intensive%20Applications_part_9_of_10_Summary/</loc>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Cluster_Dns/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Cluster_Level_Logging/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Cluster_Management_Tools/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Container/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Container_Resource_Monitoring/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Container_Runtime/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Containerized_Workloads/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Control_Plane_Deployment_Options/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Controller/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Declarative_Configuration/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Extensibility/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Horizontal_Scaling/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Ipv4Ipv6_Dual_Stack/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Key_Value_Store/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Kube_Proxy/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Kubelet/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Kubernetes_Api/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Labels/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Lease/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Load_Balancing/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Managed_Kubernetes_Services/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Network_Plugin/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Network_Proxy/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Node/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Node_Agent/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Node_Controller/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Node_Object/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Orchestration/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Platform_As_A_Service_Paas/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Pod/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Scheduler/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Secret_And_Configuration_Management/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Self_Healing/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Self_Hosted_Kubernetes/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Service_Discovery/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Static_Pods/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Storage_Orchestration/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Taints/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Tolerations/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Traditional_Deployment/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Virtual_Machine_Vm/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Virtualized_Deployment/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Concepts/Web_Ui_Dashboard/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Hubs/Containerization/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Hubs/Control_Plane/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Hubs/Kubernetes/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Hubs/Node_Components/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Processed_Transcripts/Cluster%20Architecture/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Processed_Transcripts/Kubernetes%20Nodes/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Processed_Transcripts/Kubernetes%20Overview/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Borg/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Cloud_Controller_Manager/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Containerd/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Cri_O/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Docker/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Endpointslice_Controller/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Etcd/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Job_Controller/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kops/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kube_Apiserver/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kube_Controller_Manager/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kube_Proxy/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kube_Scheduler/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kubeadm/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kubectl/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kubelet/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kubernetes/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Kubespray/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Node_Controller/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Open_Service_Broker/</loc>
+         <lastmod>2026-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://djlawenda.github.io/obsidianvault/Resources/Technologies/Serviceaccount_Controller/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
 </urlset>

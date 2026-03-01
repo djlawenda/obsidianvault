@@ -6,27 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Kubernetes is a portable, extensible, open source platform for managing containerized workloads and services that facilitate both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.">
       
       
+        <meta name="author" content="['[[Authorization]]', '[[Authorization Resources]]', '[[LocalSubjectAccessReview]]', '[[SelfSubjectAccessReview]]', '[[SelfSubjectRulesReview]]', '[[SubjectAccessReview]]', '[[ClusterRole]]', '[[ClusterRoleBinding]]', '[[Role]]', '[[RoleBinding]]']">
       
+      
+        <link rel="canonical" href="https://djlawenda.github.io/obsidianvault/Resources/Processed_Transcripts/Kubernetes%20Overview/">
+      
+      
+        <link rel="prev" href="../../Technologies/Docker/">
+      
+      
+        <link rel="next" href="../Cluster%20Architecture/">
       
       
         
       
       
-      <link rel="icon" href="/obsidianvault/assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
-        <title>Obsidian Vault</title>
+        <title>Overview - Obsidian Vault</title>
       
     
     
-      <link rel="stylesheet" href="/obsidianvault/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/obsidianvault/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,7 +55,7 @@
       
     
     
-    <script>__md_scope=new URL("/obsidianvault/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#why-you-need-kubernetes-and-what-it-can-do" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -79,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/obsidianvault/." title="Obsidian Vault" class="md-header__button md-logo" aria-label="Obsidian Vault" data-md-component="logo">
+    <a href="../../.." title="Obsidian Vault" class="md-header__button md-logo" aria-label="Obsidian Vault" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -99,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Overview
             
           </span>
         </div>
@@ -198,6 +213,8 @@
   
   
   
+    
+  
   
     
     
@@ -205,11 +222,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/obsidianvault/Resources/Concepts/Extensibility/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../Concepts/Extensibility/" class="md-tabs__link">
           
   
   
@@ -250,7 +269,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/obsidianvault/." title="Obsidian Vault" class="md-nav__button md-logo" aria-label="Obsidian Vault" data-md-component="logo">
+    <a href="../../.." title="Obsidian Vault" class="md-nav__button md-logo" aria-label="Obsidian Vault" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -265,8 +284,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -282,17 +303,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
             
   
   
@@ -310,7 +334,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -484,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Extensibility/" class="md-nav__link">
+      <a href="../../Concepts/Extensibility/" class="md-nav__link">
         
   
   
@@ -512,7 +536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Kubernetes_Api/" class="md-nav__link">
+      <a href="../../Concepts/Kubernetes_Api/" class="md-nav__link">
         
   
   
@@ -540,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Control_Plane_Deployment_Options/" class="md-nav__link">
+      <a href="../../Concepts/Control_Plane_Deployment_Options/" class="md-nav__link">
         
   
   
@@ -568,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Managed_Kubernetes_Services/" class="md-nav__link">
+      <a href="../../Concepts/Managed_Kubernetes_Services/" class="md-nav__link">
         
   
   
@@ -596,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Traditional_Deployment/" class="md-nav__link">
+      <a href="../../Concepts/Traditional_Deployment/" class="md-nav__link">
         
   
   
@@ -624,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Kube_Proxy/" class="md-nav__link">
+      <a href="../../Concepts/Kube_Proxy/" class="md-nav__link">
         
   
   
@@ -652,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Node/" class="md-nav__link">
+      <a href="../../Concepts/Node/" class="md-nav__link">
         
   
   
@@ -680,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Self_Hosted_Kubernetes/" class="md-nav__link">
+      <a href="../../Concepts/Self_Hosted_Kubernetes/" class="md-nav__link">
         
   
   
@@ -708,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Virtualized_Deployment/" class="md-nav__link">
+      <a href="../../Concepts/Virtualized_Deployment/" class="md-nav__link">
         
   
   
@@ -736,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Network_Plugin/" class="md-nav__link">
+      <a href="../../Concepts/Network_Plugin/" class="md-nav__link">
         
   
   
@@ -764,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Cluster_Management_Tools/" class="md-nav__link">
+      <a href="../../Concepts/Cluster_Management_Tools/" class="md-nav__link">
         
   
   
@@ -792,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Application_Services_Integration/" class="md-nav__link">
+      <a href="../../Concepts/Application_Services_Integration/" class="md-nav__link">
         
   
   
@@ -820,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Lease/" class="md-nav__link">
+      <a href="../../Concepts/Lease/" class="md-nav__link">
         
   
   
@@ -848,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Cluster_Dns/" class="md-nav__link">
+      <a href="../../Concepts/Cluster_Dns/" class="md-nav__link">
         
   
   
@@ -876,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Node_Agent/" class="md-nav__link">
+      <a href="../../Concepts/Node_Agent/" class="md-nav__link">
         
   
   
@@ -904,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Container/" class="md-nav__link">
+      <a href="../../Concepts/Container/" class="md-nav__link">
         
   
   
@@ -932,7 +956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Automated_Rollouts_And_Rollbacks/" class="md-nav__link">
+      <a href="../../Concepts/Automated_Rollouts_And_Rollbacks/" class="md-nav__link">
         
   
   
@@ -960,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Addons/" class="md-nav__link">
+      <a href="../../Concepts/Addons/" class="md-nav__link">
         
   
   
@@ -988,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Tolerations/" class="md-nav__link">
+      <a href="../../Concepts/Tolerations/" class="md-nav__link">
         
   
   
@@ -1016,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Kubelet/" class="md-nav__link">
+      <a href="../../Concepts/Kubelet/" class="md-nav__link">
         
   
   
@@ -1044,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Load_Balancing/" class="md-nav__link">
+      <a href="../../Concepts/Load_Balancing/" class="md-nav__link">
         
   
   
@@ -1072,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Container_Runtime/" class="md-nav__link">
+      <a href="../../Concepts/Container_Runtime/" class="md-nav__link">
         
   
   
@@ -1100,7 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Storage_Orchestration/" class="md-nav__link">
+      <a href="../../Concepts/Storage_Orchestration/" class="md-nav__link">
         
   
   
@@ -1128,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Network_Proxy/" class="md-nav__link">
+      <a href="../../Concepts/Network_Proxy/" class="md-nav__link">
         
   
   
@@ -1156,7 +1180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Automation/" class="md-nav__link">
+      <a href="../../Concepts/Automation/" class="md-nav__link">
         
   
   
@@ -1184,7 +1208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Node_Object/" class="md-nav__link">
+      <a href="../../Concepts/Node_Object/" class="md-nav__link">
         
   
   
@@ -1212,7 +1236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Batch_Execution/" class="md-nav__link">
+      <a href="../../Concepts/Batch_Execution/" class="md-nav__link">
         
   
   
@@ -1240,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Architecture_Variations/" class="md-nav__link">
+      <a href="../../Concepts/Architecture_Variations/" class="md-nav__link">
         
   
   
@@ -1268,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Controller/" class="md-nav__link">
+      <a href="../../Concepts/Controller/" class="md-nav__link">
         
   
   
@@ -1296,7 +1320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Node_Controller/" class="md-nav__link">
+      <a href="../../Concepts/Node_Controller/" class="md-nav__link">
         
   
   
@@ -1324,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Cloud_Provider/" class="md-nav__link">
+      <a href="../../Concepts/Cloud_Provider/" class="md-nav__link">
         
   
   
@@ -1352,7 +1376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Platform_As_A_Service_Paas/" class="md-nav__link">
+      <a href="../../Concepts/Platform_As_A_Service_Paas/" class="md-nav__link">
         
   
   
@@ -1380,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Labels/" class="md-nav__link">
+      <a href="../../Concepts/Labels/" class="md-nav__link">
         
   
   
@@ -1408,7 +1432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Secret_And_Configuration_Management/" class="md-nav__link">
+      <a href="../../Concepts/Secret_And_Configuration_Management/" class="md-nav__link">
         
   
   
@@ -1436,7 +1460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Orchestration/" class="md-nav__link">
+      <a href="../../Concepts/Orchestration/" class="md-nav__link">
         
   
   
@@ -1464,7 +1488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Container_Resource_Monitoring/" class="md-nav__link">
+      <a href="../../Concepts/Container_Resource_Monitoring/" class="md-nav__link">
         
   
   
@@ -1492,7 +1516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Automatic_Bin_Packing/" class="md-nav__link">
+      <a href="../../Concepts/Automatic_Bin_Packing/" class="md-nav__link">
         
   
   
@@ -1520,7 +1544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Pod/" class="md-nav__link">
+      <a href="../../Concepts/Pod/" class="md-nav__link">
         
   
   
@@ -1548,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Api_Server/" class="md-nav__link">
+      <a href="../../Concepts/Api_Server/" class="md-nav__link">
         
   
   
@@ -1576,7 +1600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Service_Discovery/" class="md-nav__link">
+      <a href="../../Concepts/Service_Discovery/" class="md-nav__link">
         
   
   
@@ -1604,7 +1628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Ipv4Ipv6_Dual_Stack/" class="md-nav__link">
+      <a href="../../Concepts/Ipv4Ipv6_Dual_Stack/" class="md-nav__link">
         
   
   
@@ -1632,7 +1656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Declarative_Configuration/" class="md-nav__link">
+      <a href="../../Concepts/Declarative_Configuration/" class="md-nav__link">
         
   
   
@@ -1660,7 +1684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Self_Healing/" class="md-nav__link">
+      <a href="../../Concepts/Self_Healing/" class="md-nav__link">
         
   
   
@@ -1688,7 +1712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Scheduler/" class="md-nav__link">
+      <a href="../../Concepts/Scheduler/" class="md-nav__link">
         
   
   
@@ -1716,7 +1740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Key_Value_Store/" class="md-nav__link">
+      <a href="../../Concepts/Key_Value_Store/" class="md-nav__link">
         
   
   
@@ -1744,7 +1768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Taints/" class="md-nav__link">
+      <a href="../../Concepts/Taints/" class="md-nav__link">
         
   
   
@@ -1772,7 +1796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Static_Pods/" class="md-nav__link">
+      <a href="../../Concepts/Static_Pods/" class="md-nav__link">
         
   
   
@@ -1800,7 +1824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Cluster_Level_Logging/" class="md-nav__link">
+      <a href="../../Concepts/Cluster_Level_Logging/" class="md-nav__link">
         
   
   
@@ -1828,7 +1852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Virtual_Machine_Vm/" class="md-nav__link">
+      <a href="../../Concepts/Virtual_Machine_Vm/" class="md-nav__link">
         
   
   
@@ -1856,7 +1880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Web_Ui_Dashboard/" class="md-nav__link">
+      <a href="../../Concepts/Web_Ui_Dashboard/" class="md-nav__link">
         
   
   
@@ -1884,7 +1908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Containerized_Workloads/" class="md-nav__link">
+      <a href="../../Concepts/Containerized_Workloads/" class="md-nav__link">
         
   
   
@@ -1912,7 +1936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Horizontal_Scaling/" class="md-nav__link">
+      <a href="../../Concepts/Horizontal_Scaling/" class="md-nav__link">
         
   
   
@@ -2042,7 +2066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kube_Controller_Manager/" class="md-nav__link">
+      <a href="../../Technologies/Kube_Controller_Manager/" class="md-nav__link">
         
   
   
@@ -2070,7 +2094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kube_Scheduler/" class="md-nav__link">
+      <a href="../../Technologies/Kube_Scheduler/" class="md-nav__link">
         
   
   
@@ -2098,7 +2122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Containerd/" class="md-nav__link">
+      <a href="../../Technologies/Containerd/" class="md-nav__link">
         
   
   
@@ -2126,7 +2150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kops/" class="md-nav__link">
+      <a href="../../Technologies/Kops/" class="md-nav__link">
         
   
   
@@ -2154,7 +2178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kube_Proxy/" class="md-nav__link">
+      <a href="../../Technologies/Kube_Proxy/" class="md-nav__link">
         
   
   
@@ -2182,7 +2206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubernetes/" class="md-nav__link">
+      <a href="../../Technologies/Kubernetes/" class="md-nav__link">
         
   
   
@@ -2210,7 +2234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Etcd/" class="md-nav__link">
+      <a href="../../Technologies/Etcd/" class="md-nav__link">
         
   
   
@@ -2238,7 +2262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Job_Controller/" class="md-nav__link">
+      <a href="../../Technologies/Job_Controller/" class="md-nav__link">
         
   
   
@@ -2266,7 +2290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubeadm/" class="md-nav__link">
+      <a href="../../Technologies/Kubeadm/" class="md-nav__link">
         
   
   
@@ -2294,7 +2318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Open_Service_Broker/" class="md-nav__link">
+      <a href="../../Technologies/Open_Service_Broker/" class="md-nav__link">
         
   
   
@@ -2322,7 +2346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubectl/" class="md-nav__link">
+      <a href="../../Technologies/Kubectl/" class="md-nav__link">
         
   
   
@@ -2350,7 +2374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kube_Apiserver/" class="md-nav__link">
+      <a href="../../Technologies/Kube_Apiserver/" class="md-nav__link">
         
   
   
@@ -2378,7 +2402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubelet/" class="md-nav__link">
+      <a href="../../Technologies/Kubelet/" class="md-nav__link">
         
   
   
@@ -2406,7 +2430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Serviceaccount_Controller/" class="md-nav__link">
+      <a href="../../Technologies/Serviceaccount_Controller/" class="md-nav__link">
         
   
   
@@ -2434,7 +2458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Endpointslice_Controller/" class="md-nav__link">
+      <a href="../../Technologies/Endpointslice_Controller/" class="md-nav__link">
         
   
   
@@ -2462,7 +2486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Cloud_Controller_Manager/" class="md-nav__link">
+      <a href="../../Technologies/Cloud_Controller_Manager/" class="md-nav__link">
         
   
   
@@ -2490,7 +2514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Node_Controller/" class="md-nav__link">
+      <a href="../../Technologies/Node_Controller/" class="md-nav__link">
         
   
   
@@ -2518,7 +2542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubespray/" class="md-nav__link">
+      <a href="../../Technologies/Kubespray/" class="md-nav__link">
         
   
   
@@ -2546,7 +2570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Cri_O/" class="md-nav__link">
+      <a href="../../Technologies/Cri_O/" class="md-nav__link">
         
   
   
@@ -2574,7 +2598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Borg/" class="md-nav__link">
+      <a href="../../Technologies/Borg/" class="md-nav__link">
         
   
   
@@ -2602,7 +2626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Docker/" class="md-nav__link">
+      <a href="../../Technologies/Docker/" class="md-nav__link">
         
   
   
@@ -2635,8 +2659,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2653,11 +2679,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
         
           
           <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
@@ -2678,7 +2704,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2693,10 +2719,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Processed_Transcripts/Kubernetes%20Overview/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2712,6 +2763,68 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-you-need-kubernetes-and-what-it-can-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why you need Kubernetes and what it can do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-kubernetes-is-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Kubernetes is not
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historical-context-for-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historical context for Kubernetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2724,7 +2837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Processed_Transcripts/Cluster%20Architecture/" class="md-nav__link">
+      <a href="../Cluster%20Architecture/" class="md-nav__link">
         
   
   
@@ -2752,7 +2865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Processed_Transcripts/Kubernetes%20Nodes/" class="md-nav__link">
+      <a href="../Kubernetes%20Nodes/" class="md-nav__link">
         
   
   
@@ -2848,7 +2961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Hubs/Kubernetes/" class="md-nav__link">
+      <a href="../../Hubs/Kubernetes/" class="md-nav__link">
         
   
   
@@ -2876,7 +2989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Hubs/Containerization/" class="md-nav__link">
+      <a href="../../Hubs/Containerization/" class="md-nav__link">
         
   
   
@@ -2904,7 +3017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Hubs/Control_Plane/" class="md-nav__link">
+      <a href="../../Hubs/Control_Plane/" class="md-nav__link">
         
   
   
@@ -2932,7 +3045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Hubs/Node_Components/" class="md-nav__link">
+      <a href="../../Hubs/Node_Components/" class="md-nav__link">
         
   
   
@@ -2981,8 +3094,93 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+  <h1>Kubernetes Overview</h1>
+
+<p>This page is an overview of Kubernetes.</p>
+<p>The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s as an abbreviation results from counting the eight letters between the "K" and the "s". Google open sourced the Kubernetes project in 2014. Kubernetes combines <a href="https://kubernetes.io/blog/2015/04/borg-predecessor-to-kubernetes/">over 15 years of Google's experience</a> running production workloads at scale with best-of-breed ideas and practices from the community.</p>
+<h2 id="why-you-need-kubernetes-and-what-it-can-do">Why you need Kubernetes and what it can do</h2>
+<p>Containers are a good way to bundle and run your applications. In a production environment, you need to manage the containers that run the applications and ensure that there is no downtime. For example, if a container goes down, another container needs to start. Wouldn't it be easier if this behavior was handled by a system?</p>
+<p>That's how Kubernetes comes to the rescue! Kubernetes provides you with a framework to run distributed systems resiliently. It takes care of scaling and failover for your application, provides deployment patterns, and more. For example: Kubernetes can easily manage a canary deployment for your system.</p>
+<p>Kubernetes provides you with:</p>
+<ul>
+<li><strong>Service discovery and load balancing</strong> Kubernetes can expose a container using a DNS name or its own IP address. If traffic to a container is high, Kubernetes is able to load balance and distribute the network traffic so that the deployment is stable.</li>
+<li><strong>Storage orchestration</strong> Kubernetes allows you to automatically mount a storage system of your choice, such as local storage, public cloud providers, and more.</li>
+<li><strong>Automated rollouts and rollbacks</strong> You can describe the desired state for your deployed containers using Kubernetes, and it can change the actual state to the desired state at a controlled rate. For example, you can automate Kubernetes to create new containers for your deployment, remove existing containers and adopt all their resources to the new container.</li>
+<li><strong>Automatic bin packing</strong> You provide Kubernetes with a cluster of nodes that it can use to run containerized tasks. You tell Kubernetes how much CPU and memory (RAM) each container needs. Kubernetes can fit containers onto your nodes to make the best use of your resources.</li>
+<li><strong>Self-healing</strong> Kubernetes restarts containers that fail, replaces containers, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.</li>
+<li><strong>Secret and configuration management</strong> Kubernetes lets you store and manage sensitive information, such as passwords, OAuth tokens, and SSH keys. You can deploy and update secrets and application configuration without rebuilding your container images, and without exposing secrets in your stack configuration.</li>
+<li><strong>Batch execution</strong> In addition to services, Kubernetes can manage your batch and CI workloads, replacing containers that fail, if desired.</li>
+<li><strong>Horizontal scaling</strong> Scale your application up and down with a simple command, with a UI, or automatically based on CPU usage.</li>
+<li><strong>IPv4/IPv6 dual-stack</strong> Allocation of IPv4 and IPv6 addresses to Pods and Services</li>
+<li><strong>Designed for extensibility</strong> Add features to your Kubernetes cluster without changing upstream source code.</li>
+</ul>
+<h2 id="what-kubernetes-is-not">What Kubernetes is not</h2>
+<p>Kubernetes is not a traditional, all-inclusive PaaS (Platform as a Service) system. Since Kubernetes operates at the container level rather than at the hardware level, it provides some generally applicable features common to PaaS offerings, such as deployment, scaling, load balancing, and lets users integrate their logging, monitoring, and alerting solutions. However, Kubernetes is not monolithic, and these default solutions are optional and pluggable. Kubernetes provides the building blocks for building developer platforms, but preserves user choice and flexibility where it is important.</p>
+<p>Kubernetes:</p>
+<ul>
+<li>Does not limit the types of applications supported. Kubernetes aims to support an extremely diverse variety of workloads, including stateless, stateful, and data-processing workloads. If an application can run in a container, it should run great on Kubernetes.</li>
+<li>Does not deploy source code and does not build your application. Continuous Integration, Delivery, and Deployment (CI/CD) workflows are determined by organization cultures and preferences as well as technical requirements.</li>
+<li>Does not provide application-level services, such as middleware (for example, message buses), data-processing frameworks (for example, Spark), databases (for example, MySQL), caches, nor cluster storage systems (for example, Ceph) as built-in services. Such components can run on Kubernetes, and/or can be accessed by applications running on Kubernetes through portable mechanisms, such as the <a href="https://openservicebrokerapi.org/">Open Service Broker</a>.</li>
+<li>Does not dictate logging, monitoring, or alerting solutions. It provides some integrations as proof of concept, and mechanisms to collect and export metrics.</li>
+<li>Does not provide nor mandate a configuration language/system (for example, Jsonnet). It provides a declarative API that may be targeted by arbitrary forms of declarative specifications.</li>
+<li>Does not provide nor adopt any comprehensive machine configuration, maintenance, management, or self-healing systems.</li>
+<li>Additionally, Kubernetes is not a mere orchestration system. In fact, it eliminates the need for orchestration. The technical definition of orchestration is execution of a defined workflow: first do A, then B, then C. In contrast, Kubernetes comprises a set of independent, composable control processes that continuously drive the current state towards the provided desired state. It shouldn't matter how you get from A to C. Centralized control is also not required. This results in a system that is easier to use and more powerful, robust, resilient, and extensible.</li>
+</ul>
+<h2 id="historical-context-for-kubernetes">Historical context for Kubernetes</h2>
+<p>Let's take a look at why Kubernetes is so useful by going back in time.</p>
+<p><img alt="Deployment evolution" src="https://kubernetes.io/images/docs/Container_Evolution.svg" /></p>
+<p><strong>Traditional deployment era:</strong></p>
+<p>Early on, organizations ran applications on physical servers. There was no way to define resource boundaries for applications in a physical server, and this caused resource allocation issues. For example, if multiple applications run on a physical server, there can be instances where one application would take up most of the resources, and as a result, the other applications would underperform. A solution for this would be to run each application on a different physical server. But this did not scale as resources were underutilized, and it was expensive for organizations to maintain many physical servers.</p>
+<p><strong>Virtualized deployment era:</strong></p>
+<p>As a solution, virtualization was introduced. It allows you to run multiple Virtual Machines (VMs) on a single physical server's CPU. Virtualization allows applications to be isolated between VMs and provides a level of security as the information of one application cannot be freely accessed by another application.</p>
+<p>Virtualization allows better utilization of resources in a physical server and allows better scalability because an application can be added or updated easily, reduces hardware costs, and much more. With virtualization you can present a set of physical resources as a cluster of disposable virtual machines.</p>
+<p>Each VM is a full machine running all the components, including its own operating system, on top of the virtualized hardware.</p>
+<p><strong>Container deployment era:</strong></p>
+<p>Containers are similar to VMs, but they have relaxed isolation properties to share the Operating System (OS) among the applications. Therefore, containers are considered lightweight. Similar to a VM, a container has its own filesystem, share of CPU, memory, process space, and more. As they are decoupled from the underlying infrastructure, they are portable across clouds and OS distributions.</p>
+<p>Containers have become popular because they provide extra benefits, such as:</p>
+<ul>
+<li>Agile application creation and deployment: increased ease and efficiency of container image creation compared to VM image use.</li>
+<li>Continuous development, integration, and deployment: provides reliable and frequent container image build and deployment with quick and efficient rollbacks (due to image immutability).</li>
+<li>Dev and Ops separation of concerns: create application container images at build/release time rather than deployment time, thereby decoupling applications from infrastructure.</li>
+<li>Observability: not only surfaces OS-level information and metrics, but also application health and other signals.</li>
+<li>Environmental consistency across development, testing, and production: runs the same on a laptop as it does in the cloud.</li>
+<li>Cloud and OS distribution portability: runs on Ubuntu, RHEL, CoreOS, on-premises, on major public clouds, and anywhere else.</li>
+<li>Application-centric management: raises the level of abstraction from running an OS on virtual hardware to running an application on an OS using logical resources.</li>
+<li>Loosely coupled, distributed, elastic, liberated micro-services: applications are broken into smaller, independent pieces and can be deployed and managed dynamically – not a monolithic stack running on one big single-purpose machine.</li>
+<li>Resource isolation: predictable application performance.</li>
+<li>Resource utilization: high efficiency and density.</li>
+</ul>
+<h2 id="whats-next">What's next</h2>
+<ul>
+<li>Take a look at the <a href="https://kubernetes.io/docs/concepts/overview/components/">Kubernetes Components</a></li>
+<li>Take a look at the <a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/">The Kubernetes API</a></li>
+<li>Take a look at the <a href="https://kubernetes.io/docs/concepts/architecture/">Cluster Architecture</a></li>
+<li>Ready to <a href="https://kubernetes.io/docs/setup/">Get Started</a>?</li>
+</ul>
+<p>Last modified January 30, 2026 at 8:43 PM PST: <a href="https://github.com/kubernetes/website/commit/2df3e4359b5b29b78cc253e9f59e7ea213624c43">docs: fix singular pronoun for container (2df3e4359b)</a></p>
+<blockquote>
+<p>Core Node: [[Projects/Second_Brain]]</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -3021,10 +3219,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/obsidianvault/", "features": ["navigation.tabs", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "/obsidianvault/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/obsidianvault/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

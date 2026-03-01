@@ -8,25 +8,31 @@
       
       
       
+        <link rel="canonical" href="https://djlawenda.github.io/obsidianvault/Resources/Concepts/Key_Value_Store/">
       
+      
+        <link rel="prev" href="../Scheduler/">
+      
+      
+        <link rel="next" href="../Taints/">
       
       
         
       
       
-      <link rel="icon" href="/obsidianvault/assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
-        <title>Obsidian Vault</title>
+        <title>Key Value Store - Obsidian Vault</title>
       
     
     
-      <link rel="stylesheet" href="/obsidianvault/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/obsidianvault/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("/obsidianvault/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#key-value-store" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -79,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/obsidianvault/." title="Obsidian Vault" class="md-header__button md-logo" aria-label="Obsidian Vault" data-md-component="logo">
+    <a href="../../.." title="Obsidian Vault" class="md-header__button md-logo" aria-label="Obsidian Vault" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -99,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Key Value Store
             
           </span>
         </div>
@@ -198,6 +209,8 @@
   
   
   
+    
+  
   
     
     
@@ -205,11 +218,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/obsidianvault/Resources/Concepts/Extensibility/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Extensibility/" class="md-tabs__link">
           
   
   
@@ -250,7 +265,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/obsidianvault/." title="Obsidian Vault" class="md-nav__button md-logo" aria-label="Obsidian Vault" data-md-component="logo">
+    <a href="../../.." title="Obsidian Vault" class="md-nav__button md-logo" aria-label="Obsidian Vault" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -265,8 +280,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -282,17 +299,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
             
   
   
@@ -310,7 +330,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -325,8 +345,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -441,11 +463,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
         
           
           <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
@@ -466,7 +488,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -484,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Extensibility/" class="md-nav__link">
+      <a href="../Extensibility/" class="md-nav__link">
         
   
   
@@ -512,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Kubernetes_Api/" class="md-nav__link">
+      <a href="../Kubernetes_Api/" class="md-nav__link">
         
   
   
@@ -540,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Control_Plane_Deployment_Options/" class="md-nav__link">
+      <a href="../Control_Plane_Deployment_Options/" class="md-nav__link">
         
   
   
@@ -568,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Managed_Kubernetes_Services/" class="md-nav__link">
+      <a href="../Managed_Kubernetes_Services/" class="md-nav__link">
         
   
   
@@ -596,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Traditional_Deployment/" class="md-nav__link">
+      <a href="../Traditional_Deployment/" class="md-nav__link">
         
   
   
@@ -624,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Kube_Proxy/" class="md-nav__link">
+      <a href="../Kube_Proxy/" class="md-nav__link">
         
   
   
@@ -652,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Node/" class="md-nav__link">
+      <a href="../Node/" class="md-nav__link">
         
   
   
@@ -680,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Self_Hosted_Kubernetes/" class="md-nav__link">
+      <a href="../Self_Hosted_Kubernetes/" class="md-nav__link">
         
   
   
@@ -708,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Virtualized_Deployment/" class="md-nav__link">
+      <a href="../Virtualized_Deployment/" class="md-nav__link">
         
   
   
@@ -736,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Network_Plugin/" class="md-nav__link">
+      <a href="../Network_Plugin/" class="md-nav__link">
         
   
   
@@ -764,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Cluster_Management_Tools/" class="md-nav__link">
+      <a href="../Cluster_Management_Tools/" class="md-nav__link">
         
   
   
@@ -792,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Application_Services_Integration/" class="md-nav__link">
+      <a href="../Application_Services_Integration/" class="md-nav__link">
         
   
   
@@ -820,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Lease/" class="md-nav__link">
+      <a href="../Lease/" class="md-nav__link">
         
   
   
@@ -848,7 +870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Cluster_Dns/" class="md-nav__link">
+      <a href="../Cluster_Dns/" class="md-nav__link">
         
   
   
@@ -876,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Node_Agent/" class="md-nav__link">
+      <a href="../Node_Agent/" class="md-nav__link">
         
   
   
@@ -904,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Container/" class="md-nav__link">
+      <a href="../Container/" class="md-nav__link">
         
   
   
@@ -932,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Automated_Rollouts_And_Rollbacks/" class="md-nav__link">
+      <a href="../Automated_Rollouts_And_Rollbacks/" class="md-nav__link">
         
   
   
@@ -960,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Addons/" class="md-nav__link">
+      <a href="../Addons/" class="md-nav__link">
         
   
   
@@ -988,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Tolerations/" class="md-nav__link">
+      <a href="../Tolerations/" class="md-nav__link">
         
   
   
@@ -1016,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Kubelet/" class="md-nav__link">
+      <a href="../Kubelet/" class="md-nav__link">
         
   
   
@@ -1044,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Load_Balancing/" class="md-nav__link">
+      <a href="../Load_Balancing/" class="md-nav__link">
         
   
   
@@ -1072,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Container_Runtime/" class="md-nav__link">
+      <a href="../Container_Runtime/" class="md-nav__link">
         
   
   
@@ -1100,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Storage_Orchestration/" class="md-nav__link">
+      <a href="../Storage_Orchestration/" class="md-nav__link">
         
   
   
@@ -1128,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Network_Proxy/" class="md-nav__link">
+      <a href="../Network_Proxy/" class="md-nav__link">
         
   
   
@@ -1156,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Automation/" class="md-nav__link">
+      <a href="../Automation/" class="md-nav__link">
         
   
   
@@ -1184,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Node_Object/" class="md-nav__link">
+      <a href="../Node_Object/" class="md-nav__link">
         
   
   
@@ -1212,7 +1234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Batch_Execution/" class="md-nav__link">
+      <a href="../Batch_Execution/" class="md-nav__link">
         
   
   
@@ -1240,7 +1262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Architecture_Variations/" class="md-nav__link">
+      <a href="../Architecture_Variations/" class="md-nav__link">
         
   
   
@@ -1268,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Controller/" class="md-nav__link">
+      <a href="../Controller/" class="md-nav__link">
         
   
   
@@ -1296,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Node_Controller/" class="md-nav__link">
+      <a href="../Node_Controller/" class="md-nav__link">
         
   
   
@@ -1324,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Cloud_Provider/" class="md-nav__link">
+      <a href="../Cloud_Provider/" class="md-nav__link">
         
   
   
@@ -1352,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Platform_As_A_Service_Paas/" class="md-nav__link">
+      <a href="../Platform_As_A_Service_Paas/" class="md-nav__link">
         
   
   
@@ -1380,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Labels/" class="md-nav__link">
+      <a href="../Labels/" class="md-nav__link">
         
   
   
@@ -1408,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Secret_And_Configuration_Management/" class="md-nav__link">
+      <a href="../Secret_And_Configuration_Management/" class="md-nav__link">
         
   
   
@@ -1436,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Orchestration/" class="md-nav__link">
+      <a href="../Orchestration/" class="md-nav__link">
         
   
   
@@ -1464,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Container_Resource_Monitoring/" class="md-nav__link">
+      <a href="../Container_Resource_Monitoring/" class="md-nav__link">
         
   
   
@@ -1492,7 +1514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Automatic_Bin_Packing/" class="md-nav__link">
+      <a href="../Automatic_Bin_Packing/" class="md-nav__link">
         
   
   
@@ -1520,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Pod/" class="md-nav__link">
+      <a href="../Pod/" class="md-nav__link">
         
   
   
@@ -1548,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Api_Server/" class="md-nav__link">
+      <a href="../Api_Server/" class="md-nav__link">
         
   
   
@@ -1576,7 +1598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Service_Discovery/" class="md-nav__link">
+      <a href="../Service_Discovery/" class="md-nav__link">
         
   
   
@@ -1604,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Ipv4Ipv6_Dual_Stack/" class="md-nav__link">
+      <a href="../Ipv4Ipv6_Dual_Stack/" class="md-nav__link">
         
   
   
@@ -1632,7 +1654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Declarative_Configuration/" class="md-nav__link">
+      <a href="../Declarative_Configuration/" class="md-nav__link">
         
   
   
@@ -1660,7 +1682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Self_Healing/" class="md-nav__link">
+      <a href="../Self_Healing/" class="md-nav__link">
         
   
   
@@ -1688,7 +1710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Scheduler/" class="md-nav__link">
+      <a href="../Scheduler/" class="md-nav__link">
         
   
   
@@ -1713,10 +1735,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Key_Value_Store/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Value Store
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1732,6 +1781,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technologies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excerpts-key-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Excerpts &amp; Key Information
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1744,7 +1846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Taints/" class="md-nav__link">
+      <a href="../Taints/" class="md-nav__link">
         
   
   
@@ -1772,7 +1874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Static_Pods/" class="md-nav__link">
+      <a href="../Static_Pods/" class="md-nav__link">
         
   
   
@@ -1800,7 +1902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Cluster_Level_Logging/" class="md-nav__link">
+      <a href="../Cluster_Level_Logging/" class="md-nav__link">
         
   
   
@@ -1828,7 +1930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Virtual_Machine_Vm/" class="md-nav__link">
+      <a href="../Virtual_Machine_Vm/" class="md-nav__link">
         
   
   
@@ -1856,7 +1958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Web_Ui_Dashboard/" class="md-nav__link">
+      <a href="../Web_Ui_Dashboard/" class="md-nav__link">
         
   
   
@@ -1884,7 +1986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Containerized_Workloads/" class="md-nav__link">
+      <a href="../Containerized_Workloads/" class="md-nav__link">
         
   
   
@@ -1912,7 +2014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Concepts/Horizontal_Scaling/" class="md-nav__link">
+      <a href="../Horizontal_Scaling/" class="md-nav__link">
         
   
   
@@ -2042,7 +2144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kube_Controller_Manager/" class="md-nav__link">
+      <a href="../../Technologies/Kube_Controller_Manager/" class="md-nav__link">
         
   
   
@@ -2070,7 +2172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kube_Scheduler/" class="md-nav__link">
+      <a href="../../Technologies/Kube_Scheduler/" class="md-nav__link">
         
   
   
@@ -2098,7 +2200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Containerd/" class="md-nav__link">
+      <a href="../../Technologies/Containerd/" class="md-nav__link">
         
   
   
@@ -2126,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kops/" class="md-nav__link">
+      <a href="../../Technologies/Kops/" class="md-nav__link">
         
   
   
@@ -2154,7 +2256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kube_Proxy/" class="md-nav__link">
+      <a href="../../Technologies/Kube_Proxy/" class="md-nav__link">
         
   
   
@@ -2182,7 +2284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubernetes/" class="md-nav__link">
+      <a href="../../Technologies/Kubernetes/" class="md-nav__link">
         
   
   
@@ -2210,7 +2312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Etcd/" class="md-nav__link">
+      <a href="../../Technologies/Etcd/" class="md-nav__link">
         
   
   
@@ -2238,7 +2340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Job_Controller/" class="md-nav__link">
+      <a href="../../Technologies/Job_Controller/" class="md-nav__link">
         
   
   
@@ -2266,7 +2368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubeadm/" class="md-nav__link">
+      <a href="../../Technologies/Kubeadm/" class="md-nav__link">
         
   
   
@@ -2294,7 +2396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Open_Service_Broker/" class="md-nav__link">
+      <a href="../../Technologies/Open_Service_Broker/" class="md-nav__link">
         
   
   
@@ -2322,7 +2424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubectl/" class="md-nav__link">
+      <a href="../../Technologies/Kubectl/" class="md-nav__link">
         
   
   
@@ -2350,7 +2452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kube_Apiserver/" class="md-nav__link">
+      <a href="../../Technologies/Kube_Apiserver/" class="md-nav__link">
         
   
   
@@ -2378,7 +2480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubelet/" class="md-nav__link">
+      <a href="../../Technologies/Kubelet/" class="md-nav__link">
         
   
   
@@ -2406,7 +2508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Serviceaccount_Controller/" class="md-nav__link">
+      <a href="../../Technologies/Serviceaccount_Controller/" class="md-nav__link">
         
   
   
@@ -2434,7 +2536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Endpointslice_Controller/" class="md-nav__link">
+      <a href="../../Technologies/Endpointslice_Controller/" class="md-nav__link">
         
   
   
@@ -2462,7 +2564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Cloud_Controller_Manager/" class="md-nav__link">
+      <a href="../../Technologies/Cloud_Controller_Manager/" class="md-nav__link">
         
   
   
@@ -2490,7 +2592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Node_Controller/" class="md-nav__link">
+      <a href="../../Technologies/Node_Controller/" class="md-nav__link">
         
   
   
@@ -2518,7 +2620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Kubespray/" class="md-nav__link">
+      <a href="../../Technologies/Kubespray/" class="md-nav__link">
         
   
   
@@ -2546,7 +2648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Cri_O/" class="md-nav__link">
+      <a href="../../Technologies/Cri_O/" class="md-nav__link">
         
   
   
@@ -2574,7 +2676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Borg/" class="md-nav__link">
+      <a href="../../Technologies/Borg/" class="md-nav__link">
         
   
   
@@ -2602,7 +2704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Technologies/Docker/" class="md-nav__link">
+      <a href="../../Technologies/Docker/" class="md-nav__link">
         
   
   
@@ -2696,7 +2798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Processed_Transcripts/Kubernetes%20Overview/" class="md-nav__link">
+      <a href="../../Processed_Transcripts/Kubernetes%20Overview/" class="md-nav__link">
         
   
   
@@ -2724,7 +2826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Processed_Transcripts/Cluster%20Architecture/" class="md-nav__link">
+      <a href="../../Processed_Transcripts/Cluster%20Architecture/" class="md-nav__link">
         
   
   
@@ -2752,7 +2854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Processed_Transcripts/Kubernetes%20Nodes/" class="md-nav__link">
+      <a href="../../Processed_Transcripts/Kubernetes%20Nodes/" class="md-nav__link">
         
   
   
@@ -2848,7 +2950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Hubs/Kubernetes/" class="md-nav__link">
+      <a href="../../Hubs/Kubernetes/" class="md-nav__link">
         
   
   
@@ -2876,7 +2978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Hubs/Containerization/" class="md-nav__link">
+      <a href="../../Hubs/Containerization/" class="md-nav__link">
         
   
   
@@ -2904,7 +3006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Hubs/Control_Plane/" class="md-nav__link">
+      <a href="../../Hubs/Control_Plane/" class="md-nav__link">
         
   
   
@@ -2932,7 +3034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/obsidianvault/Resources/Hubs/Node_Components/" class="md-nav__link">
+      <a href="../../Hubs/Node_Components/" class="md-nav__link">
         
   
   
@@ -2981,8 +3083,46 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="key-value-store">Key-Value Store</h1>
+<p>A consistent and highly-available data store used by Kubernetes as its backing store for all cluster data.</p>
+<h2 id="technologies">Technologies</h2>
+<ul>
+<li></li>
+<li>
+<p>[[Technologies/Etcd]]</p>
+</li>
+</ul>
+<h2 id="excerpts-key-information">Excerpts &amp; Key Information</h2>
+<blockquote>
+<p>From: [[Processed_Transcripts/Cluster Architecture.md]] (Added on 2026-03-01 16:42)</p>
+</blockquote>
+<ul>
+<li>Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.</li>
+</ul>
+<h2 id="further-reading">Further Reading</h2>
+<blockquote>
+<p>Core Node: [[Projects/Second_Brain]]</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -3021,10 +3161,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/obsidianvault/", "features": ["navigation.tabs", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "/obsidianvault/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/obsidianvault/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
