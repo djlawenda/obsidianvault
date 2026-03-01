@@ -9,8 +9,6 @@ MKDOCS_YML = VAULT_ROOT / "mkdocs.yml"
 
 # Source directories for notes
 SOURCE_DIRS = [
-    VAULT_ROOT / "Agents",
-    VAULT_ROOT / "journal",
     VAULT_ROOT / "Resources",
     VAULT_ROOT / "Books" / "Summaries",
 ]
@@ -39,6 +37,7 @@ def generate_mkdocs_yml():
     print(f"Generating {MKDOCS_YML}...")
     config = {
         'site_name': "Obsidian Vault",
+        'site_url': "https://djlawenda.github.io/obsidianvault/", # Crucial for GitHub Pages project sites
         'theme': {
             'name': 'material',
             'features': [

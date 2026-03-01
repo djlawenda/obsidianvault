@@ -27,12 +27,6 @@ theme:
 plugins:
 - search
 nav:
-- Agents:
-  - Persona: Agents/Persona.md
-  - Knowledge Graph Agent Instructions: Agents/Knowledge_Graph_Agent_Instructions.md
-  - Vault Structure Overview: Agents/vault_structure_overview.md
-- journal:
-  - 2026 02 28: journal/2026-02-28.md
 - Books:
   - Summaries:
     - Designing Data Intensive Applications Part 6 Of 10 Summary: Books/Summaries/Designing
