@@ -1,3 +1,5 @@
+#!/bin/bash
+cat << 'EOF_BUILD_DOCS' > /home/lukasz/Documents/ObsidianVault/_build_docs.py
 import os
 import shutil
 from pathlib import Path
@@ -150,3 +152,4 @@ if __name__ == "__main__":
     copy_notes_to_docs()
     generate_mkdocs_yml()
     print("Documentation build preparation complete. Now run 'mkdocs gh-deploy' to publish.")
+EOF_BUILD_DOCS
